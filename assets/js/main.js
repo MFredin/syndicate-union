@@ -49,30 +49,49 @@ function initStarfield() {
   ).matches;
 
   const ctx = canvas.getContext("2d");
-  let stars = [];
+  let embers = [];
   let width, height;
+
+  const colors = [
+    "196, 74, 46",
+    "224, 172, 63",
+    "245, 215, 137",
+    "122, 15, 28",
+  ];
 
   function resize() {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
-    const count = Math.floor((width * height) / 9000);
-    stars = Array.from({ length: count }, () => ({
+    const count = Math.floor((width * height) / 16000);
+    embers = Array.from({ length: count }, () => spawnEmber(true));
+  }
+
+  function spawnEmber(randomY) {
+    return {
       x: Math.random() * width,
-      y: Math.random() * height,
-      r: Math.random() * 1.3 + 0.2,
-      a: Math.random(),
-      speed: Math.random() * 0.15 + 0.02,
-    }));
+      y: randomY ? Math.random() * height : height + 10,
+      r: Math.random() * 2 + 0.6,
+      speed: Math.random() * 0.5 + 0.15,
+      drift: (Math.random() - 0.5) * 0.4,
+      flicker: Math.random() * Math.PI * 2,
+      color: colors[Math.floor(Math.random() * colors.length)],
+    };
   }
 
   function draw() {
     ctx.clearRect(0, 0, width, height);
-    for (const s of stars) {
-      s.a += s.speed * 0.02;
-      const twinkle = (Math.sin(s.a * 10) + 1) / 2;
+    for (const e of embers) {
+      e.y -= e.speed;
+      e.x += e.drift;
+      e.flicker += 0.08;
+      if (e.y < -10) Object.assign(e, spawnEmber(false));
+
+      const glow = (Math.sin(e.flicker) + 1) / 2;
       ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(200, 225, 255, ${0.25 + twinkle * 0.5})`;
+      ctx.arc(e.x, e.y, e.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${e.color}, ${0.3 + glow * 0.5})`;
+      ctx.shadowColor = `rgba(${e.color}, 0.8)`;
+      ctx.shadowBlur = 4;
       ctx.fill();
     }
     if (!prefersReducedMotion) requestAnimationFrame(draw);

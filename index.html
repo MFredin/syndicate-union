@@ -8,7 +8,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Permanent+Marker&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -18,8 +18,11 @@
   <nav class="nav-wrap">
     <a href="index.html" class="brand">
       <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
-        <polygon points="32,3 58,17.5 58,46.5 32,61 6,46.5 6,17.5" fill="none" stroke="currentColor" stroke-width="3"/>
-        <polygon points="32,24 39,28 39,36 32,40 25,36 25,28" fill="currentColor"/>
+        <path d="M10 44 L14 22 L24 34 L32 16 L40 34 L50 22 L54 44 Z" fill="var(--red)" stroke="var(--gold)" stroke-width="2.5" stroke-linejoin="round"/>
+        <rect x="10" y="44" width="44" height="7" fill="var(--gold)"/>
+        <circle cx="14" cy="20" r="3" fill="var(--gold-light)"/>
+        <circle cx="32" cy="14" r="3.5" fill="var(--gold-light)"/>
+        <circle cx="50" cy="20" r="3" fill="var(--gold-light)"/>
       </svg>
       SYNDICATE <strong>UNION</strong>
     </a>
@@ -71,30 +74,34 @@
 
   <section class="section">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow" style="justify-content:center">What We Do</p>
-        <h2>One base of operations for the whole frontier</h2>
-        <p>From new-commander onboarding to endgame fleet coordination, Syndicate Union keeps the community organized, informed, and ready for whatever the next update throws at us.</p>
-      </div>
+      <div class="ornate-frame">
+        <div class="ornate-frame-inner">
+          <div class="section-head">
+            <p class="eyebrow" style="justify-content:center">What We Do</p>
+            <h2>One base of operations for the whole frontier</h2>
+            <p>From new-commander onboarding to endgame fleet coordination, Syndicate Union keeps the community organized, informed, and ready for whatever the next update throws at us.</p>
+          </div>
 
-      <div class="grid grid-3">
-        <div class="panel">
-          <div class="card-icon">01</div>
-          <h3>Strategy Guides</h3>
-          <p>Deep-dive write-ups on economy, research priorities, fleet composition, and syndicate warfare — kept current with every patch.</p>
-          <a href="guides.html">Explore guides &rarr;</a>
-        </div>
-        <div class="panel">
-          <div class="card-icon">02</div>
-          <h3>Live Events</h3>
-          <p>Weekly strategy sessions, alliance war nights, and community tournaments — all coordinated over voice and text in Discord.</p>
-          <a href="events.html">See what's on &rarr;</a>
-        </div>
-        <div class="panel">
-          <div class="card-icon">03</div>
-          <h3>Syndicate Network</h3>
-          <p>Get matched into an active in-game alliance, find crews for raids, and climb the ranks alongside commanders who've got your back.</p>
-          <a href="roster.html">Meet the roster &rarr;</a>
+          <div class="grid grid-3">
+            <div class="panel">
+              <div class="card-icon">01</div>
+              <h3>Strategy Guides</h3>
+              <p>Deep-dive write-ups on economy, research priorities, fleet composition, and syndicate warfare — kept current with every patch.</p>
+              <a href="guides.html">Explore guides &rarr;</a>
+            </div>
+            <div class="panel">
+              <div class="card-icon">02</div>
+              <h3>Live Events</h3>
+              <p>Weekly strategy sessions, alliance war nights, and community tournaments — all coordinated over voice and text in Discord.</p>
+              <a href="events.html">See what's on &rarr;</a>
+            </div>
+            <div class="panel">
+              <div class="card-icon">03</div>
+              <h3>Syndicate Network</h3>
+              <p>Get matched into an active in-game alliance, find crews for raids, and climb the ranks alongside commanders who've got your back.</p>
+              <a href="roster.html">Meet the roster &rarr;</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -143,6 +150,13 @@
       </div>
     </div>
   </section>
+
+  <section class="statement-band">
+    <div class="container">
+      <p class="line1">Together We Play.</p>
+      <p class="line2">Together We Rise.</p>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer">
@@ -151,8 +165,11 @@
       <div>
         <a href="index.html" class="brand" style="margin-bottom:14px;">
           <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
-            <polygon points="32,3 58,17.5 58,46.5 32,61 6,46.5 6,17.5" fill="none" stroke="currentColor" stroke-width="3"/>
-            <polygon points="32,24 39,28 39,36 32,40 25,36 25,28" fill="currentColor"/>
+            <path d="M10 44 L14 22 L24 34 L32 16 L40 34 L50 22 L54 44 Z" fill="var(--red)" stroke="var(--gold)" stroke-width="2.5" stroke-linejoin="round"/>
+            <rect x="10" y="44" width="44" height="7" fill="var(--gold)"/>
+            <circle cx="14" cy="20" r="3" fill="var(--gold-light)"/>
+            <circle cx="32" cy="14" r="3.5" fill="var(--gold-light)"/>
+            <circle cx="50" cy="20" r="3" fill="var(--gold-light)"/>
           </svg>
           SYNDICATE <strong>UNION</strong>
         </a>
