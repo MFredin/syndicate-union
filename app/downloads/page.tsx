@@ -12,7 +12,7 @@ export default function DownloadsPage() {
   return (
     <>
       <PageHero
-        variant="contact"
+        variant="downloads"
         eyebrow="Asset Library"
         crumb="Downloads"
         title="Downloads"

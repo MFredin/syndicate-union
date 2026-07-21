@@ -2,10 +2,8 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { SITE } from "@/lib/site";
-import { cn } from "@/lib/utils";
 import { LogoHorizontal } from "@/components/brand/logo";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
@@ -24,42 +22,18 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 
-/** Routes with no hero banner underneath — the navbar stays solid on these
- * instead of starting transparent-over-hero. */
-function pageHasHero(pathname: string) {
-  if (pathname === "/login" || pathname === "/departments") return false;
-  if (/^\/(guides|news|wiki)\/.+/.test(pathname)) return false;
-  return true;
-}
-
+/**
+ * Always a solid, white translucent surface over the hero artwork — per
+ * 09-claude-code/VISUAL-FIDELITY.md ("Navigation overlays the top of the
+ * artwork but remains on a white translucent surface") and every reference
+ * mockup, which shows the same light nav bar at every scroll position.
+ */
 export function Navbar() {
-  const pathname = usePathname();
-  const withHero = pageHasHero(pathname);
-  const [scrolled, setScrolled] = React.useState(!withHero);
-
-  React.useEffect(() => {
-    if (!withHero) {
-      setScrolled(true);
-      return;
-    }
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [withHero]);
-
-  const transparent = withHero && !scrolled;
-
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 border-b transition-colors duration-base",
-        transparent ? "border-transparent bg-transparent" : "glass-solid shadow-soft"
-      )}
-    >
+    <header className="glass-solid fixed inset-x-0 top-0 z-50 border-b shadow-soft">
       <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="shrink-0">
-          <LogoHorizontal dark={transparent} />
+          <LogoHorizontal />
         </Link>
 
         <nav className="hidden lg:block">
@@ -68,12 +42,7 @@ export function Navbar() {
               {SITE.nav.map((item) =>
                 "children" in item && item.children ? (
                   <NavigationMenuItem key={item.label}>
-                    <NavigationMenuTrigger
-                      className={cn(
-                        "bg-transparent",
-                        transparent && "text-white hover:bg-white/15 hover:text-white"
-                      )}
-                    >
+                    <NavigationMenuTrigger className="bg-transparent">
                       {item.label}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
@@ -103,10 +72,7 @@ export function Navbar() {
                     <NavigationMenuLink asChild>
                       <Link
                         href={item.href}
-                        className={cn(
-                          "inline-flex h-10 items-center rounded-md px-3 text-sm font-medium transition-colors hover:bg-secondary",
-                          transparent && "text-white hover:bg-white/15 hover:text-white"
-                        )}
+                        className="inline-flex h-10 items-center rounded-md px-3 text-sm font-medium transition-colors hover:bg-secondary"
                       >
                         {item.label}
                       </Link>
@@ -119,24 +85,14 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle
-            className={cn(transparent && "text-white hover:bg-white/15 hover:text-white")}
-          />
+          <ThemeToggle />
           <Button asChild variant="gold" className="hidden sm:inline-flex">
             <Link href="/recruitment">Join the Union</Link>
           </Button>
 
           <Sheet>
             <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className={cn(
-                  "lg:hidden",
-                  transparent && "text-white hover:bg-white/15 hover:text-white"
-                )}
-                aria-label="Open menu"
-              >
+              <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open menu">
                 <Menu />
               </Button>
             </SheetTrigger>

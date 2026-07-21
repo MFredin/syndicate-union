@@ -12,7 +12,7 @@ export default function MembersPage() {
   return (
     <>
       <PageHero
-        variant="about"
+        variant="community"
         eyebrow="Directory"
         crumb="Members"
         title="Member Directory"

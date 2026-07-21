@@ -14,7 +14,7 @@ export default function RoadmapPage() {
   return (
     <>
       <PageHero
-        variant="contact"
+        variant="roadmap"
         eyebrow="Public Roadmap"
         crumb="Roadmap"
         title="What's Next for SU"

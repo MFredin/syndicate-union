@@ -53,6 +53,7 @@ export default function RecruitmentPage() {
     <>
       <PageHero
         variant="recruitment"
+        size="lg"
         eyebrow="Recruitment"
         crumb="Recruitment"
         title="Report for Duty"

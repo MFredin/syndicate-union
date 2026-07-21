@@ -40,6 +40,7 @@ export default function LorePage() {
     <>
       <PageHero
         variant="lore"
+        size="lg"
         eyebrow="The Chronicle"
         crumb="Lore"
         title="The Story of Syndicate Union"

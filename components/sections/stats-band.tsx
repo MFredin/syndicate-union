@@ -3,7 +3,7 @@ import { iconMap } from "@/components/common/icon-map";
 
 export function StatsBand() {
   return (
-    <section className="relative z-10 -mt-16">
+    <section className="relative z-10 mt-6 md:-mt-16">
       <div className="container">
         <div className="glass-solid grid grid-cols-2 gap-6 rounded-lg p-8 shadow-elevated md:grid-cols-5 md:gap-4">
           {stats.map((stat) => {
