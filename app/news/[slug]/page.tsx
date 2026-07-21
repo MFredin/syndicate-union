@@ -4,7 +4,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { NewsCard } from "@/components/common/news-card";
 import { Badge } from "@/components/ui/badge";
-import { mdxComponents } from "@/components/mdx-components";
+import { mdxComponents, mdxOptions } from "@/components/mdx-components";
 import { JsonLd } from "@/components/json-ld";
 import { formatDate } from "@/lib/utils";
 import { getAllContent, getContentBySlug } from "@/lib/content";
@@ -56,7 +56,7 @@ export default function NewsArticlePage({ params }: { params: { slug: string } }
         <p className="mt-2 text-sm text-muted-foreground">By {article.author}</p>
 
         <div className="mt-10 border-t border-border pt-8">
-          <MDXRemote source={article.content} components={mdxComponents} />
+          <MDXRemote source={article.content} components={mdxComponents} options={mdxOptions} />
         </div>
 
         <div className="mt-10 flex flex-wrap gap-2">
