@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { SeededAvatar } from "@/components/graphics/seeded-avatar";
-import { allies } from "@/data/allies";
+import { getAllies } from "@/lib/db/queries";
 
-export function AlliesBand() {
+export async function AlliesBand() {
+  const allies = await getAllies();
   return (
     <section className="bg-navy py-14 text-navy-foreground">
       <div className="container flex flex-wrap items-center justify-between gap-8">

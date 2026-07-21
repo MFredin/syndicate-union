@@ -20,23 +20,29 @@ const staticRoutes = [
   "/contact",
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries = staticRoutes.map((route) => ({
     url: `${SITE.url}${route}`,
     lastModified: new Date(),
   }));
 
-  const news = getAllContent("news").map((a) => ({
+  const [newsContent, guidesContent, wikiContent] = await Promise.all([
+    getAllContent("news"),
+    getAllContent("guides"),
+    getAllContent("wiki"),
+  ]);
+
+  const news = newsContent.map((a) => ({
     url: `${SITE.url}/news/${a.slug}`,
     lastModified: new Date(a.date),
   }));
 
-  const guides = getAllContent("guides").map((g) => ({
+  const guides = guidesContent.map((g) => ({
     url: `${SITE.url}/guides/${g.slug}`,
     lastModified: new Date(g.updated),
   }));
 
-  const wiki = getAllContent("wiki").map((w) => ({
+  const wiki = wikiContent.map((w) => ({
     url: `${SITE.url}/wiki/${w.slug}`,
     lastModified: new Date(),
   }));

@@ -16,8 +16,8 @@ const categoryVariant: Record<string, "default" | "gold" | "secondary" | "outlin
   Diplomacy: "secondary",
 };
 
-export function AboutNewsRow() {
-  const articles = getAllContent("news")
+export async function AboutNewsRow() {
+  const articles = (await getAllContent("news"))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 3);
 

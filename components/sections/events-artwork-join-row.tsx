@@ -3,8 +3,7 @@ import { CheckCircle2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { GalleryArt } from "@/components/graphics/gallery-art";
-import { events } from "@/data/events";
-import { galleryItems } from "@/data/gallery";
+import { getEvents, getGalleryItems } from "@/lib/db/queries";
 
 const joinPoints = [
   "Be part of a strong community",
@@ -13,7 +12,8 @@ const joinPoints = [
   "Make a real impact",
 ];
 
-export function EventsArtworkJoinRow() {
+export async function EventsArtworkJoinRow() {
+  const [events, galleryItems] = await Promise.all([getEvents(), getGalleryItems()]);
   const upcoming = events
     .filter((e) => new Date(e.startsAtUTC).getTime() > Date.now())
     .sort((a, b) => new Date(a.startsAtUTC).getTime() - new Date(b.startsAtUTC).getTime())

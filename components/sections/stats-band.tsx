@@ -1,7 +1,8 @@
-import { stats } from "@/data/stats";
+import { getStats } from "@/lib/db/queries";
 import { iconMap } from "@/components/common/icon-map";
 
-export function StatsBand() {
+export async function StatsBand() {
+  const stats = await getStats();
   return (
     <section className="relative z-10 mt-6 md:-mt-16">
       <div className="container">
