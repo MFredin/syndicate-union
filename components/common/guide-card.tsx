@@ -19,7 +19,7 @@ export function GuideCard({ guide }: { guide: ContentEntry<"guides"> }) {
             <Badge variant={difficultyVariant[guide.difficulty]}>{guide.difficulty}</Badge>
             <Badge variant="outline">{guide.category}</Badge>
           </div>
-          <h3 className="font-heading text-lg leading-snug tracking-wide transition-colors group-hover:text-primary">
+          <h3 className="font-heading text-lg leading-snug transition-colors group-hover:text-primary">
             {guide.title}
           </h3>
           <p className="flex-1 text-sm text-muted-foreground">{guide.excerpt}</p>

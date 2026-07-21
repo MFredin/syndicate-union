@@ -10,7 +10,7 @@ export function DepartmentCard({ department }: { department: Department }) {
     <Card className="flex h-full flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
       <CardHeader>
         <div className="flex items-center justify-between">
-          <span className="flex size-11 items-center justify-center rounded-md bg-primary/10 text-primary">
+          <span className="flex size-11 items-center justify-center rounded-full bg-primary/10 text-primary">
             {Icon && <Icon className="size-5" />}
           </span>
           {department.openPositions > 0 && (

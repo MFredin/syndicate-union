@@ -65,7 +65,7 @@ export default function AboutPage() {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
             {SITE.values.map((value) => (
               <div key={value.name} className="rounded-md border border-border bg-card p-6 text-center shadow-soft">
-                <h3 className="font-heading text-lg tracking-wide text-primary">{value.name}</h3>
+                <h3 className="font-heading text-lg text-primary">{value.name}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{value.description}</p>
               </div>
             ))}
@@ -79,10 +79,10 @@ export default function AboutPage() {
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {differentiators.map(({ icon: Icon, title, description }) => (
               <div key={title} className="rounded-md border border-border bg-card p-6 shadow-soft">
-                <span className="flex size-11 items-center justify-center rounded-md bg-primary/10 text-primary">
+                <span className="flex size-11 items-center justify-center rounded-full bg-primary/10 text-primary">
                   <Icon className="size-5" />
                 </span>
-                <h3 className="mt-4 font-heading text-base tracking-wide">{title}</h3>
+                <h3 className="mt-4 font-heading text-base">{title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{description}</p>
               </div>
             ))}
@@ -94,7 +94,7 @@ export default function AboutPage() {
         <div className="container grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {stats.map((stat) => (
             <div key={stat.label} className="rounded-md border border-border bg-card p-6 text-center shadow-soft">
-              <p className="font-heading text-2xl tracking-wide text-primary">{stat.value}</p>
+              <p className="font-heading text-2xl text-primary">{stat.value}</p>
               <p className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{stat.label}</p>
             </div>
           ))}

@@ -48,21 +48,21 @@ export default function ContactPage() {
                   rel="noreferrer noopener"
                   className="flex items-start gap-4 rounded-md border border-border bg-card p-4 shadow-soft transition-shadow hover:shadow-elevated"
                 >
-                  <span className="flex size-10 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                  <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
                     <Icon className="size-5" />
                   </span>
                   <div>
-                    <p className="font-heading text-sm tracking-wide">{label}</p>
+                    <p className="font-heading text-sm">{label}</p>
                     <p className="text-xs text-muted-foreground">{description}</p>
                   </div>
                 </a>
               ))}
               <div className="flex items-start gap-4 rounded-md border border-border bg-card p-4 shadow-soft">
-                <span className="flex size-10 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
                   <Mail className="size-5" />
                 </span>
                 <div>
-                  <p className="font-heading text-sm tracking-wide">Email</p>
+                  <p className="font-heading text-sm">Email</p>
                   <p className="text-xs text-muted-foreground">hello@syndicateunion.example</p>
                 </div>
               </div>

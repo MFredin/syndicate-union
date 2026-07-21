@@ -46,7 +46,7 @@
     --input: 214 22% 89%;
     --ring: 222 62% 33%;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
   }
 
   .dark {
@@ -103,7 +103,7 @@
   h1,
   h2,
   h3 {
-    @apply font-heading tracking-wide;
+    @apply font-heading tracking-normal;
   }
 
   ::selection {

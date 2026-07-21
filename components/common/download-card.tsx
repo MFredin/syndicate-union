@@ -17,12 +17,12 @@ export function DownloadCard({ asset }: { asset: DownloadAsset }) {
   return (
     <Card className="transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
       <CardContent className="flex items-start gap-4 pt-6">
-        <span className="flex size-12 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+        <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
           <Icon className="size-5" />
         </span>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <h3 className="font-heading text-base tracking-wide">{asset.title}</h3>
+            <h3 className="font-heading text-base">{asset.title}</h3>
             <Badge variant="outline">{asset.version}</Badge>
           </div>
           <p className="mt-1.5 text-sm text-muted-foreground">{asset.description}</p>

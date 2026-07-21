@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cinzel, Marcellus_SC, Inter } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -8,17 +8,11 @@ import { SITE } from "@/lib/site";
 import { organizationSchema } from "@/lib/schema";
 import "./globals.css";
 
-const cinzel = Cinzel({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-cinzel",
-  display: "swap",
-});
-
-const marcellus = Marcellus_SC({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-marcellus",
+  weight: ["400", "600", "700", "800"],
+  style: ["normal", "italic"],
+  variable: "--font-playfair",
   display: "swap",
 });
 
@@ -59,7 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${cinzel.variable} ${marcellus.variable} ${inter.variable} font-sans`}
+        className={`${playfair.variable} ${inter.variable} font-sans`}
       >
         <JsonLd data={organizationSchema()} />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>

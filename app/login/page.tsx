@@ -15,7 +15,7 @@ export default function LoginPage() {
     <section className="section-y flex min-h-screen items-center pt-32">
       <div className="container flex justify-center">
         <div className="w-full max-w-sm rounded-lg border border-border bg-card p-8 shadow-elevated">
-          <h1 className="font-heading text-2xl tracking-wide">Member Sign In</h1>
+          <h1 className="font-heading text-2xl">Member Sign In</h1>
           <p className="mt-2 text-sm text-muted-foreground">
             Enter any callsign to preview the protected Departments area.
           </p>

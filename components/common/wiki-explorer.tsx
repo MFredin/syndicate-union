@@ -33,7 +33,7 @@ export function WikiExplorer({ articles }: { articles: ContentEntry<"wiki">[] })
                   <Card className="h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
                     <CardContent className="pt-6">
                       <Badge variant="outline">{article.category}</Badge>
-                      <h3 className="mt-3 font-heading text-base tracking-wide">{article.title}</h3>
+                      <h3 className="mt-3 font-heading text-base">{article.title}</h3>
                       <p className="mt-1.5 text-sm text-muted-foreground">{article.excerpt}</p>
                     </CardContent>
                   </Card>

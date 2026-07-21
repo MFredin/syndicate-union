@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
-import { Starfield } from "./starfield";
+import { Clouds } from "./clouds";
+import { SunGlow } from "./sun-glow";
 import { OrbitalRings } from "./orbital-rings";
 import { Skyline } from "./skyline";
 import { FleetScene } from "./fleet-scene";
@@ -8,12 +9,12 @@ import { CouncilChamber } from "./council-chamber";
 export type HeroVariant = "home" | "about" | "lore" | "recruitment" | "events" | "contact";
 
 const gradients: Record<HeroVariant, string> = {
-  home: "from-[#0B1220] via-[#122456] to-[#1E3F8F]",
-  about: "from-[#0B1220] via-[#16224a] to-[#233d82]",
-  lore: "from-[#0B1220] via-[#1a1f45] to-[#2a2f6b]",
-  recruitment: "from-[#0B1220] via-[#122a5e] to-[#245098]",
-  events: "from-[#0B1220] via-[#15234e] to-[#1f3f8a]",
-  contact: "from-[#0B1220] via-[#131f45] to-[#1c3576]",
+  home: "from-[#6E97E2] via-[#CBDCF6] to-[#FBF3DE]",
+  about: "from-[#7CA2E6] via-[#CFDEF6] to-[#F8EFDD]",
+  lore: "from-[#5F86D6] via-[#C9D9F2] to-[#F7EAD4]",
+  recruitment: "from-[#6E97E2] via-[#CEDDF5] to-[#FAF1DC]",
+  events: "from-[#6B93DE] via-[#C6D8F3] to-[#F5EEDB]",
+  contact: "from-[#7CA2E6] via-[#D2E0F6] to-[#F9F1DE]",
 };
 
 interface HeroSceneProps {
@@ -31,51 +32,52 @@ export function HeroScene({ variant, className }: HeroSceneProps) {
       )}
       aria-hidden="true"
     >
-      <Starfield seed={`hero-${variant}`} count={120} />
+      <SunGlow className="right-[-6%] top-[-14%] size-[30rem] md:size-[36rem]" />
+      <Clouds seed={`hero-${variant}`} count={9} />
 
       {variant === "home" && (
         <>
-          <OrbitalRings className="right-[-10%] top-[-10%] size-[34rem] opacity-80 md:size-[42rem]" />
-          <Skyline seed="home-skyline" className="h-32 opacity-90 md:h-44" />
+          <OrbitalRings tone="light" className="right-[-10%] top-[-10%] size-[34rem] opacity-80 md:size-[42rem]" />
+          <Skyline tone="light" seed="home-skyline" className="h-32 opacity-90 md:h-44" />
         </>
       )}
 
       {variant === "about" && (
         <>
-          <OrbitalRings className="left-1/2 top-[-14%] size-[38rem] -translate-x-1/2 opacity-70" />
-          <Skyline seed="about-skyline" towers={10} className="h-28 opacity-80 md:h-36" />
+          <OrbitalRings tone="light" className="left-1/2 top-[-14%] size-[38rem] -translate-x-1/2 opacity-70" />
+          <Skyline tone="light" seed="about-skyline" towers={10} className="h-28 opacity-80 md:h-36" />
         </>
       )}
 
       {variant === "lore" && (
         <>
           <FleetScene className="right-[-4%] top-[6%] size-[30rem] opacity-90 md:size-[38rem]" />
-          <CouncilChamber className="left-[-8%] bottom-[-16%] size-[26rem] opacity-40" />
+          <CouncilChamber tone="light" className="left-[-8%] bottom-[-16%] size-[26rem] opacity-50" />
         </>
       )}
 
       {variant === "recruitment" && (
         <>
           <FleetScene className="left-[-6%] top-[10%] size-[28rem] opacity-90 md:size-[34rem]" />
-          <OrbitalRings className="right-[-14%] bottom-[-18%] size-[30rem] opacity-50" />
+          <OrbitalRings tone="light" className="right-[-14%] bottom-[-18%] size-[30rem] opacity-55" />
         </>
       )}
 
       {variant === "events" && (
         <>
-          <OrbitalRings className="right-[-8%] top-[-16%] size-[32rem] opacity-70" />
-          <OrbitalRings className="left-[-14%] bottom-[-20%] size-[26rem] opacity-40" />
+          <OrbitalRings tone="light" className="right-[-8%] top-[-16%] size-[32rem] opacity-75" />
+          <OrbitalRings tone="light" className="left-[-14%] bottom-[-20%] size-[26rem] opacity-45" />
         </>
       )}
 
       {variant === "contact" && (
         <>
-          <CouncilChamber className="right-[-10%] top-[-10%] size-[28rem] opacity-50" />
-          <Skyline seed="contact-skyline" towers={8} className="h-24 opacity-70" />
+          <CouncilChamber tone="light" className="right-[-10%] top-[-10%] size-[28rem] opacity-55" />
+          <Skyline tone="light" seed="contact-skyline" towers={8} className="h-24 opacity-75" />
         </>
       )}
 
-      <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/10 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/0 to-transparent" />
     </div>
   );
 }

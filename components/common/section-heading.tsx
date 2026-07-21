@@ -29,7 +29,7 @@ export function SectionHeading({
           {eyebrow}
         </div>
       )}
-      <h2 className="text-balance font-heading text-3xl tracking-wide text-foreground md:text-4xl">
+      <h2 className="text-balance font-heading text-3xl text-foreground md:text-4xl">
         {title}
       </h2>
       {description && <p className="mt-4 text-balance text-muted-foreground">{description}</p>}

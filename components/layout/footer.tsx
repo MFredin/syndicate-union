@@ -55,7 +55,7 @@ export function Footer() {
     <footer className="border-t border-border bg-navy text-navy-foreground">
       <div className="container grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-6">
         <div className="lg:col-span-2">
-          <LogoHorizontal className="text-navy-foreground" />
+          <LogoHorizontal className="text-navy-foreground" dark />
           <p className="mt-4 max-w-sm text-sm text-navy-foreground/70">{SITE.description}</p>
           <div className="mt-6 flex gap-2">
             {socials.map(({ label, href, icon: Icon }) => (
@@ -65,7 +65,7 @@ export function Footer() {
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label={label}
-                className="flex size-10 items-center justify-center rounded-md border border-white/10 text-navy-foreground/80 transition-colors hover:border-gold-vivid hover:text-gold-vivid"
+                className="flex size-10 items-center justify-center rounded-full border border-white/10 text-navy-foreground/80 transition-colors hover:border-gold-vivid hover:text-gold-vivid"
               >
                 <Icon className="size-4" />
               </a>
@@ -75,7 +75,7 @@ export function Footer() {
 
         {columns.map((col) => (
           <div key={col.title}>
-            <h4 className="font-heading text-sm tracking-wide text-gold-vivid">{col.title}</h4>
+            <h4 className="font-heading text-sm text-gold-vivid">{col.title}</h4>
             <ul className="mt-4 space-y-2.5">
               {col.links.map((link) => (
                 <li key={link.href}>
@@ -92,7 +92,7 @@ export function Footer() {
         ))}
 
         <div className="lg:col-span-2">
-          <h4 className="font-heading text-sm tracking-wide text-gold-vivid">Newsletter</h4>
+          <h4 className="font-heading text-sm text-gold-vivid">Newsletter</h4>
           <p className="mt-4 text-sm text-navy-foreground/70">
             Monthly dispatch: news, guides, and events — straight to your inbox.
           </p>

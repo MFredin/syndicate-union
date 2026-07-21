@@ -1,7 +1,7 @@
 import { seededRandom } from "@/lib/prng";
 import { cn } from "@/lib/utils";
 
-const HUES = [222, 42, 200, 250, 190];
+const HUES = [222, 42, 200, 215, 190];
 
 interface SeededAvatarProps {
   seed: string;

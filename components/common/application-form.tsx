@@ -15,7 +15,7 @@ export function ApplicationForm() {
     return (
       <div className="flex flex-col items-center gap-3 rounded-lg border border-border bg-card p-10 text-center shadow-soft">
         <CheckCircle2 className="size-10 text-gold" />
-        <h3 className="font-heading text-xl tracking-wide">Application received</h3>
+        <h3 className="font-heading text-xl">Application received</h3>
         <p className="max-w-sm text-sm text-muted-foreground">
           Thank you for applying to Syndicate Union. Recruitment &amp; Onboarding will reach out on Discord within 48 hours.
         </p>

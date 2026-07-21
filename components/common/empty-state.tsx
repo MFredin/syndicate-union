@@ -15,7 +15,7 @@ export function EmptyState({ icon: Icon = SearchX, title, description, className
       <span className="flex size-14 items-center justify-center rounded-md bg-secondary text-muted-foreground">
         <Icon className="size-6" />
       </span>
-      <h3 className="font-heading text-lg tracking-wide">{title}</h3>
+      <h3 className="font-heading text-lg">{title}</h3>
       {description && <p className="max-w-sm text-sm text-muted-foreground">{description}</p>}
     </div>
   );

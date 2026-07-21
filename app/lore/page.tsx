@@ -63,7 +63,7 @@ export default function LorePage() {
                           <span className="block text-xs uppercase tracking-[0.2em] text-gold">
                             Chapter {chapter.chapter} — {chapter.era}
                           </span>
-                          <span className="block font-heading text-lg tracking-wide text-foreground">
+                          <span className="block font-heading text-lg text-foreground">
                             {chapter.title}
                           </span>
                         </span>

@@ -22,7 +22,7 @@ export function NewsCard({ article }: { article: ContentEntry<"news"> }) {
             <Badge variant={categoryVariant[article.category] ?? "outline"}>{article.category}</Badge>
             {article.pinned && <Pin className="size-3.5 text-gold" aria-label="Pinned" />}
           </div>
-          <h3 className="font-heading text-lg leading-snug tracking-wide transition-colors group-hover:text-primary">
+          <h3 className="font-heading text-lg leading-snug transition-colors group-hover:text-primary">
             {article.title}
           </h3>
           <p className="flex-1 text-sm text-muted-foreground">{article.excerpt}</p>

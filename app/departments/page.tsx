@@ -33,7 +33,7 @@ export default function DepartmentsPage() {
           </form>
         </div>
 
-        <h1 className="mt-10 font-heading text-3xl tracking-wide">Union Departments</h1>
+        <h1 className="mt-10 font-heading text-3xl">Union Departments</h1>
         <p className="mt-3 max-w-xl text-muted-foreground">
           This area demonstrates where role-based, member-only department tools would live —
           internal briefings, rosters, and operation planning docs, gated per department in a
@@ -44,7 +44,7 @@ export default function DepartmentsPage() {
           {departments.map((d) => (
             <Card key={d.id}>
               <CardContent className="pt-6">
-                <h3 className="font-heading text-base tracking-wide">{d.name}</h3>
+                <h3 className="font-heading text-base">{d.name}</h3>
                 <p className="mt-1.5 text-sm text-muted-foreground">{d.summary}</p>
               </CardContent>
             </Card>

@@ -1,25 +1,23 @@
 import { Hero } from "@/components/sections/hero";
 import { StatsBand } from "@/components/sections/stats-band";
-import { AboutTeaser } from "@/components/sections/about-teaser";
-import { NewsGrid } from "@/components/sections/news-grid";
+import { AboutNewsRow } from "@/components/sections/about-news-row";
+import { QuickLinks } from "@/components/sections/quick-links";
 import { FeaturedGuides } from "@/components/sections/featured-guides";
-import { UpcomingEvents } from "@/components/sections/upcoming-events";
-import { RecruitmentCta } from "@/components/sections/recruitment-cta";
-import { FeaturedArtwork } from "@/components/sections/featured-artwork";
+import { EventsArtworkJoinRow } from "@/components/sections/events-artwork-join-row";
 import { CommunityHighlights } from "@/components/sections/community-highlights";
+import { AlliesBand } from "@/components/sections/allies-band";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
       <StatsBand />
-      <AboutTeaser />
-      <NewsGrid />
+      <AboutNewsRow />
+      <QuickLinks />
       <FeaturedGuides />
-      <UpcomingEvents />
-      <FeaturedArtwork />
+      <EventsArtworkJoinRow />
       <CommunityHighlights />
-      <RecruitmentCta />
+      <AlliesBand />
     </>
   );
 }

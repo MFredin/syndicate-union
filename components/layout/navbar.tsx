@@ -2,9 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { SITE } from "@/lib/site";
 import { LogoHorizontal } from "@/components/brand/logo";
 import { Button } from "@/components/ui/button";
@@ -24,35 +22,12 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 
-const HERO_ROUTES = new Set(["/", "/about", "/lore", "/recruitment", "/events", "/contact"]);
-
 export function Navbar() {
-  const pathname = usePathname();
-  const [scrolled, setScrolled] = React.useState(false);
-  const hasHero = HERO_ROUTES.has(pathname);
-  const transparent = hasHero && !scrolled;
-
-  React.useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 48);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        transparent
-          ? "border-b border-white/10 bg-transparent"
-          : "glass-solid border-b shadow-soft"
-      )}
-    >
+    <header className="glass-solid fixed inset-x-0 top-0 z-50 border-b shadow-soft">
       <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="shrink-0">
-          <LogoHorizontal
-            className={cn(transparent ? "text-white" : "text-foreground")}
-          />
+          <LogoHorizontal />
         </Link>
 
         <nav className="hidden lg:block">
@@ -61,12 +36,7 @@ export function Navbar() {
               {SITE.nav.map((item) =>
                 "children" in item && item.children ? (
                   <NavigationMenuItem key={item.label}>
-                    <NavigationMenuTrigger
-                      className={cn(
-                        "bg-transparent",
-                        transparent && "text-white hover:bg-white/10 hover:text-white"
-                      )}
-                    >
+                    <NavigationMenuTrigger className="bg-transparent">
                       {item.label}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
@@ -78,7 +48,7 @@ export function Navbar() {
                                 href={child.href}
                                 className="block rounded-md px-3 py-2.5 transition-colors hover:bg-secondary"
                               >
-                                <span className="font-heading text-sm tracking-wide text-primary">
+                                <span className="font-heading text-sm text-primary">
                                   {child.label}
                                 </span>
                                 <span className="mt-0.5 block text-xs text-muted-foreground">
@@ -96,10 +66,7 @@ export function Navbar() {
                     <NavigationMenuLink asChild>
                       <Link
                         href={item.href}
-                        className={cn(
-                          "inline-flex h-10 items-center rounded-md px-3 text-sm font-medium transition-colors hover:bg-secondary",
-                          transparent && "text-white hover:bg-white/10 hover:text-white"
-                        )}
+                        className="inline-flex h-10 items-center rounded-md px-3 text-sm font-medium transition-colors hover:bg-secondary"
                       >
                         {item.label}
                       </Link>
@@ -112,19 +79,14 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle className={transparent ? "text-white hover:bg-white/10 hover:text-white" : ""} />
+          <ThemeToggle />
           <Button asChild variant="gold" className="hidden sm:inline-flex">
             <Link href="/recruitment">Join the Union</Link>
           </Button>
 
           <Sheet>
             <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className={cn("lg:hidden", transparent && "text-white hover:bg-white/10 hover:text-white")}
-                aria-label="Open menu"
-              >
+              <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open menu">
                 <Menu />
               </Button>
             </SheetTrigger>
@@ -138,7 +100,7 @@ export function Navbar() {
                 {SITE.nav.map((item) => (
                   <div key={item.label} className="border-b border-border py-2">
                     <SheetClose asChild>
-                      <Link href={item.href} className="block py-2 font-heading text-base tracking-wide">
+                      <Link href={item.href} className="block py-2 font-heading text-base">
                         {item.label}
                       </Link>
                     </SheetClose>
