@@ -4,7 +4,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { WikiSidebar } from "@/components/common/wiki-sidebar";
 import { Badge } from "@/components/ui/badge";
-import { mdxComponents } from "@/components/mdx-components";
+import { mdxComponents, mdxOptions } from "@/components/mdx-components";
 import { getAllContent, getContentBySlug } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -40,7 +40,7 @@ export default function WikiArticlePage({ params }: { params: { slug: string } }
           </Badge>
           <h1 className="mt-4 text-balance font-heading text-3xl tracking-wide sm:text-4xl">{article.title}</h1>
           <div className="mt-8 border-t border-border pt-8">
-            <MDXRemote source={article.content} components={mdxComponents} />
+            <MDXRemote source={article.content} components={mdxComponents} options={mdxOptions} />
           </div>
         </article>
       </div>

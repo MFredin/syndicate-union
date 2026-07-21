@@ -8,7 +8,7 @@ import { FleetScene } from "@/components/graphics/fleet-scene";
 import { CouncilChamber } from "@/components/graphics/council-chamber";
 import { Skyline } from "@/components/graphics/skyline";
 import { LibertyEmblem } from "@/components/brand/liberty-emblem";
-import { mdxComponents } from "@/components/mdx-components";
+import { mdxComponents, mdxOptions } from "@/components/mdx-components";
 import { getAllContent } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -71,7 +71,7 @@ export default function LorePage() {
                     </AccordionTrigger>
                     <AccordionContent>
                       <div className="pl-16">
-                        <MDXRemote source={chapter.content} components={mdxComponents} />
+                        <MDXRemote source={chapter.content} components={mdxComponents} options={mdxOptions} />
                       </div>
                     </AccordionContent>
                   </AccordionItem>

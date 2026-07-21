@@ -1,5 +1,12 @@
 import Link from "next/link";
+import remarkGfm from "remark-gfm";
 import type { MDXComponents } from "mdx/types";
+
+/** GitHub-flavored markdown (tables, strikethrough, task lists, autolinks)
+ * isn't part of standard MDX and needs remark-gfm enabled explicitly. */
+export const mdxOptions = {
+  mdxOptions: { remarkPlugins: [remarkGfm] },
+};
 
 export const mdxComponents: MDXComponents = {
   h2: (props) => <h2 className="mt-10 font-heading text-2xl tracking-wide" {...props} />,

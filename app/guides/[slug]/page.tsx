@@ -4,7 +4,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { GuideCard } from "@/components/common/guide-card";
 import { Badge } from "@/components/ui/badge";
-import { mdxComponents } from "@/components/mdx-components";
+import { mdxComponents, mdxOptions } from "@/components/mdx-components";
 import { JsonLd } from "@/components/json-ld";
 import { formatDate } from "@/lib/utils";
 import { getAllContent, getContentBySlug } from "@/lib/content";
@@ -53,7 +53,7 @@ export default function GuideDetailPage({ params }: { params: { slug: string } }
         <p className="mt-4 text-muted-foreground">{guide.excerpt}</p>
 
         <div className="mt-10 border-t border-border pt-8">
-          <MDXRemote source={guide.content} components={mdxComponents} />
+          <MDXRemote source={guide.content} components={mdxComponents} options={mdxOptions} />
         </div>
       </div>
 
