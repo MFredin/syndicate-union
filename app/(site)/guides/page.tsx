@@ -3,6 +3,8 @@ import { PageHero } from "@/components/common/page-hero";
 import { GuidesExplorer } from "@/components/common/guides-explorer";
 import { getAllContent } from "@/lib/content";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Guides",
   description: "Strategy guides covering economy, combat, fleet composition, diplomacy, and onboarding.",

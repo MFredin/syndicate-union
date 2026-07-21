@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { SeededAvatar } from "@/components/graphics/seeded-avatar";
 import { getDepartments, getStaff } from "@/lib/db/queries";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Staff Directory",
   description: "Meet the leadership behind each Syndicate Union department and how to reach them.",

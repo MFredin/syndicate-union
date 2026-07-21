@@ -12,6 +12,8 @@ import { LibertyEmblem } from "@/components/brand/liberty-emblem";
 import { mdxComponents, mdxOptions } from "@/components/mdx-components";
 import { getAllContent } from "@/lib/content";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Lore",
   description: "The story of Syndicate Union — from a fractured frontier to a community eight divisions strong.",

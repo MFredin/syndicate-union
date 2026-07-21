@@ -11,9 +11,7 @@ import { getAllContent, getContentBySlug } from "@/lib/content";
 import { articleSchema } from "@/lib/schema";
 import { SITE } from "@/lib/site";
 
-export async function generateStaticParams() {
-  return (await getAllContent("news")).map((a) => ({ slug: a.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const article = await getContentBySlug("news", params.slug);

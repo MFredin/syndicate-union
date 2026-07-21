@@ -3,6 +3,8 @@ import { PageHero } from "@/components/common/page-hero";
 import { FaqExplorer } from "@/components/common/faq-explorer";
 import { getFaqs } from "@/lib/db/queries";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "FAQ",
   description: "Frequently asked questions about joining, participating in, and navigating Syndicate Union.",

@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/site";
 import { getAllContent } from "@/lib/content";
 
+export const dynamic = "force-dynamic";
+
 const staticRoutes = [
   "",
   "/about",
