@@ -3,6 +3,8 @@ import { PageHero } from "@/components/common/page-hero";
 import { NewsExplorer } from "@/components/common/news-explorer";
 import { getAllContent } from "@/lib/content";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "News",
   description: "Announcements, event recaps, and community dispatches from across Syndicate Union.",

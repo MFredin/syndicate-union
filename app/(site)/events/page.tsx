@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { getEvents } from "@/lib/db/queries";
 import { SITE } from "@/lib/site";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Events",
   description: "The Syndicate Union events calendar — war nights, onboarding sessions, diplomacy summits, and community socials.",

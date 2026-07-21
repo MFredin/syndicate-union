@@ -7,9 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { mdxComponents, mdxOptions } from "@/components/mdx-components";
 import { getAllContent, getContentBySlug } from "@/lib/content";
 
-export async function generateStaticParams() {
-  return (await getAllContent("wiki")).map((a) => ({ slug: a.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const article = await getContentBySlug("wiki", params.slug);

@@ -4,6 +4,8 @@ import { WikiSidebar } from "@/components/common/wiki-sidebar";
 import { WikiExplorer } from "@/components/common/wiki-explorer";
 import { getAllContent } from "@/lib/content";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Wiki",
   description: "The Syndicate Union knowledge base — foundations, economy, combat, diplomacy, and community reference articles.",

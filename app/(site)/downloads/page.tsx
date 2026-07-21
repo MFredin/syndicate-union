@@ -3,6 +3,8 @@ import { PageHero } from "@/components/common/page-hero";
 import { DownloadsExplorer } from "@/components/common/downloads-explorer";
 import { getDownloads } from "@/lib/db/queries";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Downloads",
   description: "Wallpapers, brand kit assets, printable guides, and templates for Unionists.",

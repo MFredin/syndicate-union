@@ -5,6 +5,8 @@ import { Timeline } from "@/components/common/timeline";
 import { RoadmapExplorer } from "@/components/common/roadmap-explorer";
 import { getRoadmap } from "@/lib/db/queries";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Roadmap",
   description: "What Syndicate Union is building next, tracked publicly by status and quarter.",

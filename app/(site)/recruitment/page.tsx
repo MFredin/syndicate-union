@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/button";
 import { iconMap } from "@/components/common/icon-map";
 import { getDepartments, getFaqs } from "@/lib/db/queries";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Recruitment",
   description: "Join Syndicate Union — explore our departments, open positions, and application process.",

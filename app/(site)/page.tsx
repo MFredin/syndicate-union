@@ -7,6 +7,8 @@ import { EventsArtworkJoinRow } from "@/components/sections/events-artwork-join-
 import { CommunityHighlights } from "@/components/sections/community-highlights";
 import { AlliesBand } from "@/components/sections/allies-band";
 
+export const dynamic = "force-dynamic";
+
 export default function HomePage() {
   return (
     <>

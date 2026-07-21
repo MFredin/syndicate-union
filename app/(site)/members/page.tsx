@@ -3,6 +3,8 @@ import { PageHero } from "@/components/common/page-hero";
 import { MembersExplorer } from "@/components/common/members-explorer";
 import { getMembers, getDepartments, getBadges } from "@/lib/db/queries";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Member Directory",
   description: "Search and browse the Unionists across every department of Syndicate Union.",

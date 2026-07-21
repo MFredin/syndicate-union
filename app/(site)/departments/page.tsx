@@ -7,6 +7,8 @@ import { getDepartments } from "@/lib/db/queries";
 import { getDemoSession } from "@/lib/auth";
 import { demoLogout } from "@/app/(site)/login/actions";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Union Departments",
   robots: { index: false, follow: false },

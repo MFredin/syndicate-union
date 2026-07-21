@@ -5,6 +5,8 @@ import { GalleryExplorer } from "@/components/common/gallery-explorer";
 import { GalleryArt } from "@/components/graphics/gallery-art";
 import { getGalleryItems } from "@/lib/db/queries";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Gallery",
   description: "Original artwork, screenshots, and videos from Syndicate Union's creator community.",

@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { SITE } from "@/lib/site";
 import { getTimeline, getStaff, getStats, getDepartments } from "@/lib/db/queries";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "About",
   description: "Learn who Syndicate Union is, our mission, core values, and the leadership that serves the membership.",
