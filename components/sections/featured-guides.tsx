@@ -5,8 +5,8 @@ import { GuideCard } from "@/components/common/guide-card";
 import { Button } from "@/components/ui/button";
 import { getAllContent } from "@/lib/content";
 
-export function FeaturedGuides() {
-  const guides = getAllContent("guides")
+export async function FeaturedGuides() {
+  const guides = (await getAllContent("guides"))
     .sort((a, b) => new Date(b.updated).getTime() - new Date(a.updated).getTime())
     .slice(0, 3);
 

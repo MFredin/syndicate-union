@@ -1,97 +1,177 @@
-import fs from "node:fs";
-import path from "node:path";
-import matter from "gray-matter";
-import { z } from "zod";
+import { eq } from "drizzle-orm";
+import { db } from "./db/client";
+import * as schema from "./db/schema";
 import { readingTime } from "./utils";
 
-const CONTENT_DIR = path.join(process.cwd(), "content");
+export type ContentType = "news" | "lore" | "guides" | "wiki";
 
-const newsSchema = z.object({
-  title: z.string(),
-  date: z.string(),
-  excerpt: z.string(),
-  category: z.enum(["Community", "Events", "Guides", "Announcements", "Diplomacy"]),
-  tags: z.array(z.string()).default([]),
-  pinned: z.boolean().default(false),
-  author: z.string(),
-});
+interface NewsFields {
+  title: string;
+  date: string;
+  excerpt: string;
+  category: "Community" | "Events" | "Guides" | "Announcements" | "Diplomacy";
+  tags: string[];
+  pinned: boolean;
+  author: string;
+}
 
-const loreSchema = z.object({
-  title: z.string(),
-  chapter: z.number(),
-  era: z.string(),
-  excerpt: z.string(),
-});
+interface LoreFields {
+  title: string;
+  chapter: number;
+  era: string;
+  excerpt: string;
+}
 
-const guideSchema = z.object({
-  title: z.string(),
-  category: z.string(),
-  difficulty: z.enum(["Beginner", "Intermediate", "Advanced"]),
-  excerpt: z.string(),
-  updated: z.string(),
-});
+interface GuideFields {
+  title: string;
+  category: string;
+  difficulty: "Beginner" | "Intermediate" | "Advanced";
+  excerpt: string;
+  updated: string;
+}
 
-const wikiSchema = z.object({
-  title: z.string(),
-  category: z.string(),
-  order: z.number().default(0),
-  excerpt: z.string(),
-});
+interface WikiFields {
+  title: string;
+  category: string;
+  order: number;
+  excerpt: string;
+}
 
-const schemas = {
-  news: newsSchema,
-  lore: loreSchema,
-  guides: guideSchema,
-  wiki: wikiSchema,
-} as const;
+type FieldsFor<T extends ContentType> = T extends "news"
+  ? NewsFields
+  : T extends "lore"
+    ? LoreFields
+    : T extends "guides"
+      ? GuideFields
+      : WikiFields;
 
-export type ContentType = keyof typeof schemas;
-
-export type ContentEntry<T extends ContentType> = z.infer<(typeof schemas)[T]> & {
+export type ContentEntry<T extends ContentType> = FieldsFor<T> & {
   slug: string;
   content: string;
   readingTime: number;
 };
 
-function readDir(type: ContentType): string[] {
-  const dir = path.join(CONTENT_DIR, type);
-  if (!fs.existsSync(dir)) return [];
-  return fs.readdirSync(dir).filter((f) => f.endsWith(".mdx"));
+export async function getAllContent<T extends ContentType>(type: T): Promise<ContentEntry<T>[]> {
+  switch (type) {
+    case "news": {
+      const rows = await db.select().from(schema.news);
+      return rows.map((r) => ({
+        title: r.title,
+        date: r.date,
+        excerpt: r.excerpt,
+        category: r.category as NewsFields["category"],
+        tags: r.tags,
+        pinned: r.pinned,
+        author: r.author,
+        slug: r.slug,
+        content: r.body,
+        readingTime: readingTime(r.body),
+      })) as unknown as ContentEntry<T>[];
+    }
+    case "lore": {
+      const rows = await db.select().from(schema.lore);
+      return rows.map((r) => ({
+        title: r.title,
+        chapter: r.chapter,
+        era: r.era,
+        excerpt: r.excerpt,
+        slug: r.slug,
+        content: r.body,
+        readingTime: readingTime(r.body),
+      })) as unknown as ContentEntry<T>[];
+    }
+    case "guides": {
+      const rows = await db.select().from(schema.guides);
+      return rows.map((r) => ({
+        title: r.title,
+        category: r.category,
+        difficulty: r.difficulty as GuideFields["difficulty"],
+        excerpt: r.excerpt,
+        updated: r.updated,
+        slug: r.slug,
+        content: r.body,
+        readingTime: readingTime(r.body),
+      })) as unknown as ContentEntry<T>[];
+    }
+    case "wiki": {
+      const rows = await db.select().from(schema.wiki);
+      return rows.map((r) => ({
+        title: r.title,
+        category: r.category,
+        order: r.order,
+        excerpt: r.excerpt,
+        slug: r.slug,
+        content: r.body,
+        readingTime: readingTime(r.body),
+      })) as unknown as ContentEntry<T>[];
+    }
+    default:
+      return [];
+  }
 }
 
-export function getAllContent<T extends ContentType>(type: T): ContentEntry<T>[] {
-  const files = readDir(type);
-  const schema = schemas[type];
-
-  const entries = files.map((file) => {
-    const slug = file.replace(/\.mdx$/, "");
-    const raw = fs.readFileSync(path.join(CONTENT_DIR, type, file), "utf8");
-    const { data, content } = matter(raw);
-    const parsed = schema.parse(data);
-    return {
-      ...parsed,
-      slug,
-      content,
-      readingTime: readingTime(content),
-    } as ContentEntry<T>;
-  });
-
-  return entries;
-}
-
-export function getContentBySlug<T extends ContentType>(
+export async function getContentBySlug<T extends ContentType>(
   type: T,
   slug: string
-): ContentEntry<T> | null {
-  const filePath = path.join(CONTENT_DIR, type, `${slug}.mdx`);
-  if (!fs.existsSync(filePath)) return null;
-  const raw = fs.readFileSync(filePath, "utf8");
-  const { data, content } = matter(raw);
-  const parsed = schemas[type].parse(data);
-  return {
-    ...parsed,
-    slug,
-    content,
-    readingTime: readingTime(content),
-  } as ContentEntry<T>;
+): Promise<ContentEntry<T> | null> {
+  switch (type) {
+    case "news": {
+      const [r] = await db.select().from(schema.news).where(eq(schema.news.slug, slug)).limit(1);
+      if (!r) return null;
+      return {
+        title: r.title,
+        date: r.date,
+        excerpt: r.excerpt,
+        category: r.category as NewsFields["category"],
+        tags: r.tags,
+        pinned: r.pinned,
+        author: r.author,
+        slug: r.slug,
+        content: r.body,
+        readingTime: readingTime(r.body),
+      } as unknown as ContentEntry<T>;
+    }
+    case "lore": {
+      const [r] = await db.select().from(schema.lore).where(eq(schema.lore.slug, slug)).limit(1);
+      if (!r) return null;
+      return {
+        title: r.title,
+        chapter: r.chapter,
+        era: r.era,
+        excerpt: r.excerpt,
+        slug: r.slug,
+        content: r.body,
+        readingTime: readingTime(r.body),
+      } as unknown as ContentEntry<T>;
+    }
+    case "guides": {
+      const [r] = await db.select().from(schema.guides).where(eq(schema.guides.slug, slug)).limit(1);
+      if (!r) return null;
+      return {
+        title: r.title,
+        category: r.category,
+        difficulty: r.difficulty as GuideFields["difficulty"],
+        excerpt: r.excerpt,
+        updated: r.updated,
+        slug: r.slug,
+        content: r.body,
+        readingTime: readingTime(r.body),
+      } as unknown as ContentEntry<T>;
+    }
+    case "wiki": {
+      const [r] = await db.select().from(schema.wiki).where(eq(schema.wiki.slug, slug)).limit(1);
+      if (!r) return null;
+      return {
+        title: r.title,
+        category: r.category,
+        order: r.order,
+        excerpt: r.excerpt,
+        slug: r.slug,
+        content: r.body,
+        readingTime: readingTime(r.body),
+      } as unknown as ContentEntry<T>;
+    }
+    default:
+      return null;
+  }
 }

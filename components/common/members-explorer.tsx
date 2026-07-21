@@ -5,12 +5,20 @@ import { SearchBar } from "@/components/common/search-bar";
 import { ProfileCard } from "@/components/common/profile-card";
 import { EmptyState } from "@/components/common/empty-state";
 import type { Member } from "@/data/members";
+import type { Department } from "@/data/departments";
+import type { Badge } from "@/data/badges";
 import { formatDate } from "@/lib/utils";
 
 const selectClass =
   "h-9 rounded-md border border-input bg-background px-3 text-sm";
 
-export function MembersExplorer({ members }: { members: Member[] }) {
+interface MembersExplorerProps {
+  members: Member[];
+  departments: Department[];
+  badges: Badge[];
+}
+
+export function MembersExplorer({ members, departments: allDepartments, badges: allBadges }: MembersExplorerProps) {
   const [query, setQuery] = React.useState("");
   const [department, setDepartment] = React.useState("All");
   const [role, setRole] = React.useState("All");
@@ -69,17 +77,24 @@ export function MembersExplorer({ members }: { members: Member[] }) {
           <EmptyState title="No members found" description="Try a different search term or department." />
         ) : (
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
-            {filtered.map((m) => (
-              <ProfileCard
-                key={m.id}
-                seed={m.id}
-                name={m.callsign}
-                role={m.role}
-                department={m.department}
-                badgeIds={m.badges}
-                meta={`Joined ${formatDate(m.joined, { month: "short", year: "numeric" })}`}
-              />
-            ))}
+            {filtered.map((m) => {
+              const dept = allDepartments.find((d) => d.name === m.department);
+              const resolvedBadges = m.badges
+                .map((id) => allBadges.find((b) => b.id === id))
+                .filter((b): b is Badge => Boolean(b));
+              return (
+                <ProfileCard
+                  key={m.id}
+                  seed={m.id}
+                  name={m.callsign}
+                  role={m.role}
+                  department={m.department}
+                  departmentIcon={dept?.icon}
+                  badges={resolvedBadges}
+                  meta={`Joined ${formatDate(m.joined, { month: "short", year: "numeric" })}`}
+                />
+              );
+            })}
           </div>
         )}
       </div>

@@ -1,25 +1,30 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { SeededAvatar } from "@/components/graphics/seeded-avatar";
-import { badges as allBadges } from "@/data/badges";
-import { departments } from "@/data/departments";
 import { iconMap } from "@/components/common/icon-map";
+import type { Badge } from "@/data/badges";
 
 interface ProfileCardProps {
   seed: string;
   name: string;
   role: string;
   department: string;
-  badgeIds?: string[];
+  /** Lucide icon key for the member's department, already resolved by the caller. */
+  departmentIcon?: string;
+  /** Fully resolved badge records, already looked up by the caller. */
+  badges?: Badge[];
   meta?: string;
 }
 
-export function ProfileCard({ seed, name, role, department, badgeIds = [], meta }: ProfileCardProps) {
-  const resolvedBadges = badgeIds
-    .map((id) => allBadges.find((b) => b.id === id))
-    .filter((b): b is NonNullable<typeof b> => Boolean(b));
-
-  const dept = departments.find((d) => d.name === department);
-  const DeptIcon = dept ? iconMap[dept.icon] : undefined;
+export function ProfileCard({
+  seed,
+  name,
+  role,
+  department,
+  departmentIcon,
+  badges = [],
+  meta,
+}: ProfileCardProps) {
+  const DeptIcon = departmentIcon ? iconMap[departmentIcon] : undefined;
 
   return (
     <Card className="group overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
@@ -43,9 +48,9 @@ export function ProfileCard({ seed, name, role, department, badgeIds = [], meta 
           <p className="text-xs text-muted-foreground">{department}</p>
         </div>
         {meta && <p className="text-xs text-muted-foreground">{meta}</p>}
-        {resolvedBadges.length > 0 && (
+        {badges.length > 0 && (
           <div className="flex flex-wrap justify-center gap-1.5 pt-1">
-            {resolvedBadges.map((badge) => (
+            {badges.map((badge) => (
               // eslint-disable-next-line @next/next/no-img-element
               <img
                 key={badge.id}

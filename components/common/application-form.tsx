@@ -6,9 +6,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { departments } from "@/data/departments";
+import type { Department } from "@/data/departments";
 
-export function ApplicationForm() {
+export function ApplicationForm({ departments }: { departments: Department[] }) {
   const [submitted, setSubmitted] = React.useState(false);
 
   if (submitted) {
