@@ -21,8 +21,9 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        display: ["var(--font-playfair)", "serif"],
-        heading: ["var(--font-playfair)", "serif"],
+        display: ["var(--font-cormorant)", "serif"],
+        heading: ["var(--font-cormorant)", "serif"],
+        script: ["var(--font-allura)", "cursive"],
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       colors: {
@@ -70,9 +71,11 @@ const config: Config = {
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        sm: "var(--radius-sm)",
+        DEFAULT: "var(--radius-md)",
+        md: "var(--radius-md)",
+        lg: "var(--radius-lg)",
+        xl: "var(--radius-xl)",
       },
       backgroundImage: {
         "grid-fade":
@@ -103,10 +106,18 @@ const config: Config = {
         shimmer: "shimmer 3s linear infinite",
       },
       boxShadow: {
-        soft: "0 1px 2px 0 rgb(15 27 61 / 0.04), 0 8px 24px -8px rgb(15 27 61 / 0.10)",
-        elevated:
-          "0 2px 8px 0 rgb(15 27 61 / 0.06), 0 16px 40px -12px rgb(15 27 61 / 0.16)",
+        soft: "0 1px 2px rgba(7,27,58,.08)",
+        elevated: "0 8px 24px rgba(7,27,58,.10)",
+        large: "0 20px 60px rgba(7,27,58,.14)",
         glow: "0 0 0 1px hsl(var(--gold-vivid) / 0.3), 0 8px 30px -8px hsl(var(--gold-vivid) / 0.35)",
+      },
+      transitionDuration: {
+        fast: "140ms",
+        base: "220ms",
+        slow: "420ms",
+      },
+      transitionTimingFunction: {
+        su: "cubic-bezier(.2,.8,.2,1)",
       },
     },
   },

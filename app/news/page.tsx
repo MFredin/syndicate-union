@@ -18,6 +18,7 @@ export default function NewsPage() {
       <PageHero
         variant="contact"
         eyebrow="Dispatches"
+        crumb="News"
         title="News from the Union"
         description="Announcements, operation recaps, and community stories — updated weekly."
       />

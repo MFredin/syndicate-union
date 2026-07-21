@@ -14,6 +14,7 @@ export default function FaqPage() {
       <PageHero
         variant="contact"
         eyebrow="Frequently Asked"
+        crumb="FAQ"
         title="Questions, Answered"
         description="Search or browse by category — and if you can't find what you need, the Contact page always reaches a real person."
       />

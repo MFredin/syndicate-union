@@ -4,85 +4,98 @@
 
 @layer base {
   :root {
-    /* core neutrals */
-    --background: 210 33% 98%;
-    --foreground: 222 47% 12%;
+    /* Design-system tokens ported from 02-tokens/tokens.json (exact hex,
+       converted to HSL to keep the existing bg-x/text-x utility pattern). */
+
+    /* su-neutral-50 #F7F9FC */
+    --background: 216 41% 98%;
+    /* su-neutral-900 #101827 */
+    --foreground: 219 42% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 12%;
+    --card-foreground: 219 42% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 12%;
+    --popover-foreground: 219 42% 11%;
 
-    /* royal blue */
-    --primary: 222 62% 33%;
-    --primary-foreground: 210 40% 98%;
+    /* su-blue-600 #1769E0 */
+    --primary: 216 81% 48%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 213 28% 95%;
-    --secondary-foreground: 222 47% 15%;
+    /* su-neutral-100 #EEF2F7 */
+    --secondary: 213 36% 95%;
+    --secondary-foreground: 219 42% 11%;
 
-    --muted: 213 24% 94%;
-    --muted-foreground: 217 15% 42%;
+    --muted: 213 36% 95%;
+    /* su-neutral-500 #6D7B8E */
+    --muted-foreground: 215 13% 49%;
 
-    --accent: 42 58% 52%;
-    --accent-foreground: 222 47% 12%;
+    /* su-gold-500 #E5A91B */
+    --accent: 42 80% 50%;
+    --accent-foreground: 219 42% 11%;
 
-    /* gold: darkened "ink" shade for text/icons on the theme's normal
-       (light) surfaces, so it clears WCAG AA contrast (~5.6:1 on white).
-       Use --gold-vivid instead when placing gold on permanently-dark
-       surfaces (hero scenes, the navy footer) or for fills/backgrounds. */
-    --gold: 38 65% 32%;
-    --gold-foreground: 222 47% 10%;
-    --gold-vivid: 42 60% 50%;
+    /* gold: darkened "ink" shade (su-gold-700 #9A6500, ~4.95:1 on white) for
+       text/icons on the theme's normal light surfaces. Use --gold-vivid
+       (su-gold-500 #E5A91B) on permanently-dark surfaces, fills, and
+       button/badge backgrounds instead. */
+    --gold: 39 100% 30%;
+    --gold-foreground: 219 42% 11%;
+    --gold-vivid: 42 80% 50%;
 
-    /* navy (deep surface, footer, dark sections) */
-    --navy: 222 55% 13%;
-    --navy-foreground: 210 30% 96%;
+    /* su-blue-900 #071B3A */
+    --navy: 216 78% 13%;
+    --navy-foreground: 0 0% 100%;
 
-    --destructive: 0 68% 48%;
-    --destructive-foreground: 210 40% 98%;
+    /* su-danger #C43D3D */
+    --destructive: 0 53% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214 22% 89%;
-    --input: 214 22% 89%;
-    --ring: 222 62% 33%;
+    /* su-neutral-200 #DDE4EE */
+    --border: 215 33% 90%;
+    --input: 215 33% 90%;
+    --ring: 39 100% 30%;
 
-    --radius: 1rem;
+    /* sharp-corner radius scale (tokens.json: radius.sm/md/lg/xl) */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
   }
 
   .dark {
-    --background: 222 47% 7%;
-    --foreground: 210 30% 96%;
+    --background: 216 60% 8%;
+    --foreground: 216 41% 96%;
 
-    --card: 222 42% 10%;
-    --card-foreground: 210 30% 96%;
+    --card: 216 55% 11%;
+    --card-foreground: 216 41% 96%;
 
-    --popover: 222 42% 10%;
-    --popover-foreground: 210 30% 96%;
+    --popover: 216 55% 11%;
+    --popover-foreground: 216 41% 96%;
 
-    --primary: 217 72% 64%;
-    --primary-foreground: 222 47% 8%;
+    --primary: 216 93% 64%;
+    --primary-foreground: 219 42% 9%;
 
-    --secondary: 222 30% 15%;
-    --secondary-foreground: 210 30% 96%;
+    --secondary: 216 30% 17%;
+    --secondary-foreground: 216 41% 96%;
 
-    --muted: 222 26% 15%;
-    --muted-foreground: 216 14% 68%;
+    --muted: 216 26% 17%;
+    --muted-foreground: 215 15% 68%;
 
-    --accent: 42 66% 60%;
-    --accent-foreground: 222 47% 8%;
+    --accent: 42 88% 62%;
+    --accent-foreground: 219 42% 9%;
 
-    --gold: 42 66% 60%;
-    --gold-foreground: 222 47% 8%;
+    --gold: 42 88% 62%;
+    --gold-foreground: 219 42% 9%;
 
-    --navy: 222 55% 5%;
-    --navy-foreground: 210 30% 96%;
+    --navy: 216 78% 6%;
+    --navy-foreground: 0 0% 100%;
 
-    --destructive: 0 62% 48%;
-    --destructive-foreground: 210 30% 96%;
+    --destructive: 0 53% 45%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 222 24% 20%;
-    --input: 222 24% 20%;
-    --ring: 217 72% 64%;
+    --border: 216 24% 22%;
+    --input: 216 24% 22%;
+    --ring: 216 93% 64%;
   }
 }
 

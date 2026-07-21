@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/common/page-hero";
 import { SectionHeading } from "@/components/common/section-heading";
 import { Timeline } from "@/components/common/timeline";
-import { RoadmapBoard } from "@/components/common/roadmap-board";
+import { RoadmapExplorer } from "@/components/common/roadmap-explorer";
 import { roadmap } from "@/data/roadmap";
 
 export const metadata: Metadata = {
@@ -16,6 +16,7 @@ export default function RoadmapPage() {
       <PageHero
         variant="contact"
         eyebrow="Public Roadmap"
+        crumb="Roadmap"
         title="What's Next for SU"
         description="Published transparently, updated every quarter by the Council of Elders."
       />
@@ -24,7 +25,7 @@ export default function RoadmapPage() {
         <div className="container">
           <SectionHeading eyebrow="By Status" title="Current priorities" />
           <div className="mt-10">
-            <RoadmapBoard items={roadmap} />
+            <RoadmapExplorer items={roadmap} />
           </div>
         </div>
       </section>

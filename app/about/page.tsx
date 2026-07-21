@@ -40,6 +40,7 @@ export default function AboutPage() {
       <PageHero
         variant="about"
         eyebrow="About Syndicate Union"
+        crumb="About"
         title="A community built on liberty, unity, and service"
         description="Here's who we are, what we stand for, and how we got here."
       />
@@ -49,7 +50,7 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="Who We Are"
             title="Player-driven, professionally run"
-            description="Syndicate Union is an independent community within Foundation: Galactic Frontier, organized into six departments and governed by an elected Council of Elders. We're not affiliated with the game's publisher — we're players who wanted a better way to play together."
+            description="Syndicate Union is an independent community within Foundation: Galactic Frontier, organized into eight divisions and governed by an elected Council of Elders. We're not affiliated with the game's publisher — we're players who wanted a better way to play together."
           />
           <SectionHeading
             eyebrow="Mission"

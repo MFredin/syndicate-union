@@ -15,8 +15,9 @@ export default function WikiPage() {
   return (
     <>
       <PageHero
-        variant="events"
+        variant="wiki"
         eyebrow="Knowledge Base"
+        crumb="Wiki"
         title="The Syndicate Union Wiki"
         description="Structured reference articles covering everything from the Union Charter to the current war system."
       />

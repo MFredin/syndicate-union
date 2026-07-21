@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { MessageCircle } from "lucide-react";
 import { PageHero } from "@/components/common/page-hero";
-import { SectionHeading } from "@/components/common/section-heading";
-import { MonthCalendar } from "@/components/common/month-calendar";
+import { MiniCalendar } from "@/components/common/mini-calendar";
 import { EventCard } from "@/components/common/event-card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { events } from "@/data/events";
 import { SITE } from "@/lib/site";
@@ -27,35 +27,37 @@ export default function EventsPage() {
       <PageHero
         variant="events"
         eyebrow="Calendar"
+        crumb="Events"
         title="Union Events"
         description="Every time shown converts automatically to your device's local timezone."
       />
 
       <section className="section-y">
-        <div className="container">
-          <MonthCalendar events={events} monthDate={new Date()} />
-        </div>
-      </section>
-
-      <section className="section-y bg-secondary/40">
-        <div className="container">
-          <SectionHeading eyebrow="Upcoming" title="What's on the calendar" />
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {upcoming.map((event) => (
-              <EventCard key={event.id} event={event} />
-            ))}
+        <div className="container grid gap-10 lg:grid-cols-[300px_1fr]">
+          <div className="lg:sticky lg:top-28 lg:self-start">
+            <MiniCalendar events={events} />
           </div>
-        </div>
-      </section>
 
-      <section className="section-y">
-        <div className="container">
-          <SectionHeading eyebrow="Past Events" title="What we've already done" />
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {past.map((event) => (
-              <EventCard key={event.id} event={event} isPast />
-            ))}
-          </div>
+          <Tabs defaultValue="upcoming">
+            <TabsList>
+              <TabsTrigger value="upcoming">Upcoming ({upcoming.length})</TabsTrigger>
+              <TabsTrigger value="past">Past ({past.length})</TabsTrigger>
+            </TabsList>
+            <TabsContent value="upcoming">
+              <div className="flex flex-col gap-4">
+                {upcoming.map((event) => (
+                  <EventCard key={event.id} event={event} />
+                ))}
+              </div>
+            </TabsContent>
+            <TabsContent value="past">
+              <div className="flex flex-col gap-4">
+                {past.map((event) => (
+                  <EventCard key={event.id} event={event} isPast />
+                ))}
+              </div>
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
 

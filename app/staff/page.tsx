@@ -19,6 +19,7 @@ export default function StaffPage() {
       <PageHero
         variant="about"
         eyebrow="Leadership"
+        crumb="Staff"
         title="Staff Directory"
         description="Department leads, their responsibilities, and how to get in touch."
       />

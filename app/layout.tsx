@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Cormorant_Garamond, Allura, Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -8,11 +8,18 @@ import { SITE } from "@/lib/site";
 import { organizationSchema } from "@/lib/schema";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
-  variable: "--font-playfair",
+  variable: "--font-cormorant",
+  display: "swap",
+});
+
+const allura = Allura({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-allura",
   display: "swap",
 });
 
@@ -43,17 +50,13 @@ export const metadata: Metadata = {
     title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
   },
-  icons: {
-    icon: "/icon",
-    apple: "/apple-icon",
-  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${playfair.variable} ${inter.variable} font-sans`}
+        className={`${cormorant.variable} ${allura.variable} ${inter.variable} font-sans`}
       >
         <JsonLd data={organizationSchema()} />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>

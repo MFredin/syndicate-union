@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Pin } from "lucide-react";
+import { Pin, ChevronRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { formatDate } from "@/lib/utils";
@@ -13,7 +13,41 @@ const categoryVariant: Record<string, "default" | "gold" | "secondary" | "outlin
   Diplomacy: "secondary",
 };
 
-export function NewsCard({ article }: { article: ContentEntry<"news"> }) {
+interface NewsCardProps {
+  article: ContentEntry<"news">;
+  /** "grid" (default) for the pinned showcase; "row" for the compact list. */
+  variant?: "grid" | "row";
+}
+
+export function NewsCard({ article, variant = "grid" }: NewsCardProps) {
+  if (variant === "row") {
+    return (
+      <Link href={`/news/${article.slug}`} className="group block">
+        <Card className="transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
+          <CardContent className="flex items-start gap-4 pt-6">
+            <Badge variant={categoryVariant[article.category] ?? "outline"} className="mt-0.5 shrink-0">
+              {article.category}
+            </Badge>
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-2">
+                <h3 className="font-heading text-base leading-snug transition-colors group-hover:text-primary">
+                  {article.title}
+                </h3>
+                {article.pinned && <Pin className="size-3.5 shrink-0 text-gold" aria-label="Pinned" />}
+              </div>
+              <p className="mt-1 text-sm text-muted-foreground">{article.excerpt}</p>
+              <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
+                <span>{formatDate(article.date, { month: "short", day: "numeric", year: "numeric" })}</span>
+                <span>{article.readingTime} min read</span>
+              </div>
+            </div>
+            <ChevronRight className="mt-1 size-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
+          </CardContent>
+        </Card>
+      </Link>
+    );
+  }
+
   return (
     <Link href={`/news/${article.slug}`} className="group block h-full">
       <Card className="flex h-full flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">

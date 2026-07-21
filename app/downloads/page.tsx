@@ -14,6 +14,7 @@ export default function DownloadsPage() {
       <PageHero
         variant="contact"
         eyebrow="Asset Library"
+        crumb="Downloads"
         title="Downloads"
         description="Wallpapers, brand assets, printable guides, and templates — free to use as a Unionist."
       />
