@@ -17,7 +17,7 @@ export default function StaffPage() {
   return (
     <>
       <PageHero
-        variant="about"
+        variant="community"
         eyebrow="Leadership"
         crumb="Staff"
         title="Staff Directory"

@@ -16,7 +16,7 @@ export default function NewsPage() {
   return (
     <>
       <PageHero
-        variant="contact"
+        variant="news"
         eyebrow="Dispatches"
         crumb="News"
         title="News from the Union"

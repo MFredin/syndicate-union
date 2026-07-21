@@ -39,6 +39,7 @@ export default function AboutPage() {
     <>
       <PageHero
         variant="about"
+        size="lg"
         eyebrow="About Syndicate Union"
         crumb="About"
         title="A community built on liberty, unity, and service"
