@@ -1,20 +1,24 @@
 import { HeroScene, type HeroVariant } from "@/components/graphics/hero-scene";
+import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { cn } from "@/lib/utils";
 
 interface PageHeroProps {
   variant: HeroVariant;
   eyebrow: string;
   title: string;
+  /** Short label for the breadcrumb trail; falls back to `title` if omitted. */
+  crumb?: string;
   description?: string;
   className?: string;
 }
 
-export function PageHero({ variant, eyebrow, title, description, className }: PageHeroProps) {
+export function PageHero({ variant, eyebrow, title, crumb, description, className }: PageHeroProps) {
   return (
     <section className={cn("relative flex min-h-[50vh] items-end overflow-hidden pt-20", className)}>
       <HeroScene variant={variant} />
       <div className="container relative py-16">
         <div className="max-w-2xl">
+          <Breadcrumbs items={[{ label: crumb ?? title }]} className="mb-5" />
           <div className="mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-gold">
             <span className="h-px w-8 bg-gold" />
             {eyebrow}

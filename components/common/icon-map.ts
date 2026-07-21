@@ -10,6 +10,10 @@ import {
   Star,
   ShieldCheck,
   CalendarDays,
+  Compass,
+  Factory,
+  Radar,
+  Route,
   type LucideIcon,
 } from "lucide-react";
 
@@ -25,4 +29,8 @@ export const iconMap: Record<string, LucideIcon> = {
   Star,
   ShieldCheck,
   CalendarDays,
+  Compass,
+  Factory,
+  Radar,
+  Route,
 };

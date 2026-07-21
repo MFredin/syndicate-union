@@ -11,7 +11,7 @@ interface LogoProps {
 
 function Wordmark({ className, dark }: LogoProps) {
   return (
-    <span className={cn("font-display italic", className)}>
+    <span className={cn("font-script", dark ? "text-white" : "text-foreground", className)}>
       Syndicate <span className={dark ? "text-gold-vivid" : "text-gold"}>Union</span>
     </span>
   );
@@ -21,7 +21,7 @@ function Tagline({ className, dark }: LogoProps) {
   return (
     <span
       className={cn(
-        "block text-[0.6em] font-sans not-italic uppercase tracking-[0.25em]",
+        "block text-[0.5em] font-sans uppercase tracking-[0.25em]",
         dark ? "text-gold-vivid" : "text-gold",
         className
       )}
@@ -37,8 +37,8 @@ export function LogoHorizontal({ className, dark }: LogoProps) {
     <span className={cn("inline-flex items-center gap-3", className)}>
       <LogoMark className="size-9" />
       <span className="flex flex-col leading-tight">
-        <Wordmark className="text-xl font-semibold" dark={dark} />
-        <Tagline dark={dark} />
+        <Wordmark className="text-2xl" dark={dark} />
+        <Tagline />
       </span>
     </span>
   );
@@ -49,8 +49,8 @@ export function LogoVertical({ className, dark }: LogoProps) {
   return (
     <span className={cn("inline-flex flex-col items-center gap-2 text-center", className)}>
       <LogoMark className="size-14" />
-      <Wordmark className="text-lg font-semibold" dark={dark} />
-      <Tagline dark={dark} />
+      <Wordmark className="text-xl" dark={dark} />
+      <Tagline />
     </span>
   );
 }
@@ -60,8 +60,8 @@ export function LogoFull({ className, dark }: LogoProps) {
   return (
     <span className={cn("inline-flex flex-col items-center gap-3 text-center", className)}>
       <LogoMark className="size-16" />
-      <Wordmark className="text-2xl font-semibold" dark={dark} />
-      <Tagline className="text-xs" dark={dark} />
+      <Wordmark className="text-3xl" dark={dark} />
+      <Tagline className="text-xs" />
     </span>
   );
 }
@@ -70,8 +70,8 @@ export function LogoFull({ className, dark }: LogoProps) {
 export function LogoMonochrome({ className }: LogoProps) {
   return (
     <span className={cn("inline-flex items-center gap-3", className)}>
-      <LogoMark variant="mono" className="size-9" />
-      <span className="font-display text-xl font-semibold italic">Syndicate Union</span>
+      <LogoMark className="size-9" />
+      <span className="font-script text-2xl">Syndicate Union</span>
     </span>
   );
 }
@@ -85,9 +85,8 @@ export function LogoIcon({ className }: LogoProps) {
 export function LogoWatermark({ className }: LogoProps) {
   return (
     <LogoMark
-      variant="mono"
       title=""
-      className={cn("pointer-events-none size-[36rem] text-foreground/[0.03]", className)}
+      className={cn("pointer-events-none size-[36rem] opacity-[0.04]", className)}
     />
   );
 }

@@ -16,8 +16,9 @@ export default function GuidesPage() {
   return (
     <>
       <PageHero
-        variant="recruitment"
+        variant="wiki"
         eyebrow="Guide Library"
+        crumb="Guides"
         title="Strategy, written by the people who use it"
         description="Filter by difficulty and category to find exactly what you need, from newcomer basics to advanced fleet doctrine."
       />

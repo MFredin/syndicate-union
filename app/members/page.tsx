@@ -14,6 +14,7 @@ export default function MembersPage() {
       <PageHero
         variant="about"
         eyebrow="Directory"
+        crumb="Members"
         title="Member Directory"
         description="A searchable roster of the Unionists building Syndicate Union, one department at a time."
       />

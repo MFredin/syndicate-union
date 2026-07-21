@@ -5,7 +5,9 @@ import { SectionHeading } from "@/components/common/section-heading";
 import { DepartmentCard } from "@/components/common/department-card";
 import { FaqAccordion } from "@/components/common/faq-accordion";
 import { ApplicationForm } from "@/components/common/application-form";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { iconMap } from "@/components/common/icon-map";
 import { departments } from "@/data/departments";
 import { faqs } from "@/data/faq";
 
@@ -52,6 +54,7 @@ export default function RecruitmentPage() {
       <PageHero
         variant="recruitment"
         eyebrow="Recruitment"
+        crumb="Recruitment"
         title="Report for Duty"
         description="Whether you're brand new to the frontier or a seasoned commander looking for a better home, there's a place for you here."
       />
@@ -75,11 +78,42 @@ export default function RecruitmentPage() {
 
       <section className="section-y bg-secondary/40">
         <div className="container">
-          <SectionHeading eyebrow="Departments" title="Six departments, one union" />
+          <SectionHeading eyebrow="Departments" title="Eight divisions, one union" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {departments.map((d) => (
               <DepartmentCard key={d.id} department={d} />
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-y">
+        <div className="container max-w-3xl">
+          <SectionHeading eyebrow="Open Roles" title="Where we need you right now" />
+          <div className="mt-10 flex flex-col gap-3">
+            {departments
+              .filter((d) => d.openPositions > 0)
+              .sort((a, b) => b.openPositions - a.openPositions)
+              .map((d) => {
+                const Icon = iconMap[d.icon];
+                return (
+                  <div
+                    key={d.id}
+                    className="flex items-center gap-4 rounded-md border border-border bg-card p-5 shadow-soft"
+                  >
+                    <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      {Icon && <Icon className="size-5" />}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="font-heading text-base">{d.name}</h3>
+                      <p className="text-sm text-muted-foreground">{d.summary}</p>
+                    </div>
+                    <Badge variant="gold" className="shrink-0">
+                      {d.openPositions} open
+                    </Badge>
+                  </div>
+                );
+              })}
           </div>
         </div>
       </section>
