@@ -38,7 +38,7 @@ export default function WikiArticlePage({ params }: { params: { slug: string } }
           <Badge variant="outline" className="mt-6">
             {article.category}
           </Badge>
-          <h1 className="mt-4 text-balance font-heading text-3xl tracking-wide sm:text-4xl">{article.title}</h1>
+          <h1 className="mt-4 text-balance font-heading text-3xl sm:text-4xl">{article.title}</h1>
           <div className="mt-8 border-t border-border pt-8">
             <MDXRemote source={article.content} components={mdxComponents} options={mdxOptions} />
           </div>

@@ -62,7 +62,7 @@ export default function EventsPage() {
       <section className="section-y bg-navy text-navy-foreground">
         <div className="container flex flex-col items-center gap-4 text-center">
           <MessageCircle className="size-8 text-gold-vivid" />
-          <h2 className="font-heading text-2xl tracking-wide">Every event is coordinated on Discord</h2>
+          <h2 className="font-heading text-2xl">Every event is coordinated on Discord</h2>
           <p className="max-w-xl text-navy-foreground/70">
             RSVP here for planning purposes, then join the voice channel listed on each event when it&rsquo;s time.
           </p>

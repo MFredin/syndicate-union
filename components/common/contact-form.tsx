@@ -14,7 +14,7 @@ export function ContactForm() {
     return (
       <div className="flex flex-col items-center gap-3 rounded-lg border border-border bg-card p-10 text-center shadow-soft">
         <CheckCircle2 className="size-10 text-gold" />
-        <h3 className="font-heading text-xl tracking-wide">Message sent</h3>
+        <h3 className="font-heading text-xl">Message sent</h3>
         <p className="max-w-sm text-sm text-muted-foreground">
           Thanks for reaching out — we typically respond within two business days.
         </p>

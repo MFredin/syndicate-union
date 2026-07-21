@@ -52,7 +52,7 @@ export default function NewsArticlePage({ params }: { params: { slug: string } }
             {formatDate(article.date)} &middot; {article.readingTime} min read
           </span>
         </div>
-        <h1 className="mt-4 text-balance font-heading text-3xl tracking-wide sm:text-4xl">{article.title}</h1>
+        <h1 className="mt-4 text-balance font-heading text-3xl sm:text-4xl">{article.title}</h1>
         <p className="mt-2 text-sm text-muted-foreground">By {article.author}</p>
 
         <div className="mt-10 border-t border-border pt-8">
@@ -70,7 +70,7 @@ export default function NewsArticlePage({ params }: { params: { slug: string } }
 
       {related.length > 0 && (
         <div className="container mt-20 max-w-5xl">
-          <h2 className="font-heading text-xl tracking-wide">Related dispatches</h2>
+          <h2 className="font-heading text-xl">Related dispatches</h2>
           <div className="mt-6 grid gap-6 md:grid-cols-3">
             {related.map((a) => (
               <NewsCard key={a.slug} article={a} />

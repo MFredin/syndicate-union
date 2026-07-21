@@ -53,7 +53,7 @@ export function WikiSidebar({
   return (
     <>
       <details className="rounded-md border border-border bg-card p-4 lg:hidden">
-        <summary className="flex cursor-pointer items-center justify-between font-heading text-sm tracking-wide">
+        <summary className="flex cursor-pointer items-center justify-between font-heading text-sm">
           Browse categories
           <ChevronDown className="size-4 text-gold" />
         </summary>

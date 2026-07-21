@@ -29,7 +29,7 @@ export function MonthCalendar({ events, monthDate }: { events: Event[]; monthDat
 
   return (
     <div>
-      <h3 className="mb-4 font-heading text-lg tracking-wide">{monthLabel}</h3>
+      <h3 className="mb-4 font-heading text-lg">{monthLabel}</h3>
       <div className="grid grid-cols-7 gap-px overflow-hidden rounded-md border border-border bg-border text-center text-xs">
         {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
           <div key={d} className="bg-secondary py-2 font-semibold text-muted-foreground">

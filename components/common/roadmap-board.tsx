@@ -21,7 +21,7 @@ export function RoadmapBoard({ items }: { items: RoadmapItem[] }) {
           <div key={status}>
             <div className="mb-4 flex items-center gap-2">
               <Icon className="size-4 text-gold" />
-              <h3 className="font-heading text-sm tracking-wide">{status}</h3>
+              <h3 className="font-heading text-sm">{status}</h3>
               <Badge variant={badge} className="ml-auto">
                 {columnItems.length}
               </Badge>
@@ -31,7 +31,7 @@ export function RoadmapBoard({ items }: { items: RoadmapItem[] }) {
                 <Card key={item.id}>
                   <CardContent className="pt-5">
                     <div className="flex items-center justify-between gap-2">
-                      <h4 className="font-heading text-sm tracking-wide">{item.title}</h4>
+                      <h4 className="font-heading text-sm">{item.title}</h4>
                       <Badge variant="outline" className="shrink-0 text-[10px]">
                         {item.quarter}
                       </Badge>

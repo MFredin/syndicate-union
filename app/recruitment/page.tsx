@@ -62,10 +62,10 @@ export default function RecruitmentPage() {
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {whyJoin.map(({ icon: Icon, title, description }) => (
               <div key={title} className="rounded-md border border-border bg-card p-6 text-center shadow-soft">
-                <span className="mx-auto flex size-11 items-center justify-center rounded-md bg-primary/10 text-primary">
+                <span className="mx-auto flex size-11 items-center justify-center rounded-full bg-primary/10 text-primary">
                   <Icon className="size-5" />
                 </span>
-                <h3 className="mt-4 font-heading text-base tracking-wide">{title}</h3>
+                <h3 className="mt-4 font-heading text-base">{title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{description}</p>
               </div>
             ))}
@@ -106,7 +106,7 @@ export default function RecruitmentPage() {
                     {i + 1}
                   </span>
                   <div>
-                    <p className="font-heading text-sm tracking-wide">{step.title}</p>
+                    <p className="font-heading text-sm">{step.title}</p>
                     <p className="text-sm text-muted-foreground">{step.description}</p>
                   </div>
                 </li>

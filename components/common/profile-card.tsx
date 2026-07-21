@@ -24,7 +24,7 @@ export function ProfileCard({ seed, name, role, department, badgeIds = [], meta 
           <SeededAvatar seed={seed} />
         </div>
         <div>
-          <h3 className="font-heading text-base tracking-wide">{name}</h3>
+          <h3 className="font-heading text-base">{name}</h3>
           <p className="text-sm text-primary">{role}</p>
           <p className="text-xs text-muted-foreground">{department}</p>
         </div>

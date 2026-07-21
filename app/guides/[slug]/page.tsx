@@ -49,7 +49,7 @@ export default function GuideDetailPage({ params }: { params: { slug: string } }
             {guide.readingTime} min read &middot; Updated {formatDate(guide.updated)}
           </span>
         </div>
-        <h1 className="mt-4 text-balance font-heading text-3xl tracking-wide sm:text-4xl">{guide.title}</h1>
+        <h1 className="mt-4 text-balance font-heading text-3xl sm:text-4xl">{guide.title}</h1>
         <p className="mt-4 text-muted-foreground">{guide.excerpt}</p>
 
         <div className="mt-10 border-t border-border pt-8">
@@ -59,7 +59,7 @@ export default function GuideDetailPage({ params }: { params: { slug: string } }
 
       {related.length > 0 && (
         <div className="container mt-20 max-w-5xl">
-          <h2 className="font-heading text-xl tracking-wide">Related guides</h2>
+          <h2 className="font-heading text-xl">Related guides</h2>
           <div className="mt-6 grid gap-6 md:grid-cols-3">
             {related.map((g) => (
               <GuideCard key={g.slug} guide={g} />

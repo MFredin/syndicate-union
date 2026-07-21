@@ -5,10 +5,13 @@ interface SkylineProps {
   className?: string;
   seed?: string;
   towers?: number;
+  /** "dark": tuned for navy/dark surfaces. "light": tuned for the bright
+   * daylight hero backgrounds. */
+  tone?: "dark" | "light";
 }
 
 /** Abstract geometric orbital cityscape silhouette. */
-export function Skyline({ className, seed = "su-skyline", towers = 14 }: SkylineProps) {
+export function Skyline({ className, seed = "su-skyline", towers = 14, tone = "dark" }: SkylineProps) {
   const rand = seededRandom(seed);
   const bars = Array.from({ length: towers }, (_, i) => {
     const width = 3 + rand() * 4.5;
@@ -19,6 +22,8 @@ export function Skyline({ className, seed = "su-skyline", towers = 14 }: Skyline
   let x = 0;
   const total = bars.reduce((acc, b) => acc + b.width + 1.5, 0);
   const scale = 100 / total;
+  const fill = tone === "light" ? "#1E3F8F" : "#0F1B3D";
+  const fillOpacity = tone === "light" ? 1 : 0.85;
 
   return (
     <svg
@@ -34,7 +39,7 @@ export function Skyline({ className, seed = "su-skyline", towers = 14 }: Skyline
         x += b.width + 1.5;
         return (
           <g key={i}>
-            <rect x={rectX} y={50 - h} width={w} height={h} fill="#0F1B3D" opacity={0.85} />
+            <rect x={rectX} y={50 - h} width={w} height={h} fill={fill} opacity={fillOpacity} />
             {b.spire && (
               <>
                 <line

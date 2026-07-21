@@ -40,7 +40,7 @@ export function EventCard({ event, isPast = false }: { event: Event; isPast?: bo
             <span className="text-xs text-muted-foreground">{count} attending</span>
           )}
         </div>
-        <h3 className="font-heading text-lg tracking-wide">{event.title}</h3>
+        <h3 className="font-heading text-lg">{event.title}</h3>
         <p className="text-sm text-muted-foreground">{event.description}</p>
         <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-sm text-muted-foreground">
           <span className="flex items-center gap-1.5">

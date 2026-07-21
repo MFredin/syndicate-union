@@ -36,7 +36,7 @@ export default function StaffPage() {
                         <SeededAvatar seed={lead.id} />
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-heading text-lg tracking-wide">{lead.name}</h3>
+                        <h3 className="font-heading text-lg">{lead.name}</h3>
                         <p className="text-sm text-primary">{lead.role}</p>
                         <p className="mt-2 text-sm text-muted-foreground">{lead.bio}</p>
                         <ul className="mt-3 space-y-1 text-sm text-muted-foreground">
